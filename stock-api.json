@@ -153,6 +153,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "stock report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywidXNlcl9uYW1lIjoidXNlcjYiLCJpYXQiOjE3Mjg3NTI4NjUsImV4cCI6MTcyODc1NjQ2NX0.aaMrElafFf-VRuewx1ChH_M_b3KgSAznDrgClUfJXk0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
