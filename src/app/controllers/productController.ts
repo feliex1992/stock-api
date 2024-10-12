@@ -34,4 +34,21 @@ export default class ProductController {
       }
     }
   }
+
+  public async stockReport(req: Request, res: Response): Promise<any> {
+    try {
+      const result = await this.productUseCase.stockReport();
+      res.status(201).json(result);
+    } catch(e: any) {
+      if (typeof e === 'string') {
+        return res.status(400).json({
+          error: {
+            message: e
+          }
+        });
+      } else {
+        return res.status(400).json(e);
+      }
+    }
+  }
 }

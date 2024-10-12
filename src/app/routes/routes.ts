@@ -22,6 +22,9 @@ router.post('/login', (req, res) => userController.logIn(req, res));
 router.post('/login-by-phone', (req, res) => userController.logInByNoPhone(req, res));
 router.post('/verify-otp', (req, res) => userController.verifyOTPLogin(req, res));
 router.post('/register', (req, res) => userController.register(req, res));
-router.post('/products', (req, res, next) => authenticateToken(req, res, next), (req, res) => productController.createProduct(req, res));
+router.post('/products', (req, res, next) => authenticateToken(req, res, next),
+  (req, res) => productController.createProduct(req, res));
+router.get('/products', (req, res, next) => authenticateToken(req, res, next),
+  (req, res) => productController.stockReport(req, res));
 
 export default router;

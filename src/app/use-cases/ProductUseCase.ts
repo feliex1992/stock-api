@@ -16,4 +16,8 @@ export class ProductUseCase {
     const createdProduct = await this.productRepository.create(product);
     return createdProduct;
   }
+
+  public async stockReport(): Promise<Product[]> {
+    return await this.productRepository.stockReport();
+  }
 }

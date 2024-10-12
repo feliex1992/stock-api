@@ -29,4 +29,28 @@ export class ProductRepository {
       await Database.closeConnection()
     }
   }
+
+  public async stockReport(): Promise<Product[]> {
+    const db: Client = Database.getConnection();
+    try {
+      const result = await db.query(
+        `SELECT
+          p.id, p.product_name, c.category_name, p.qty, p.price, cu.user_name, uu.user_name
+        FROM tm_product p
+        INNER JOIN tm_category c on c.id=p.category_id
+        INNER JOIN tm_user cu on cu.id=p.created_id
+        INNER JOIN tm_user uu on uu.id=p.updated_id`,
+      );
+      return result.rows;
+    } catch (e: any) {
+      console.log(e);
+      if (typeof e === 'string') {
+        throw new Error(e);
+      } else {
+        throw new Error(e.message);
+      }
+    } finally {
+      await Database.closeConnection()
+    }
+  }
 }
